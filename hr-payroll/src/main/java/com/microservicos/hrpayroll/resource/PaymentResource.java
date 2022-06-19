@@ -1,5 +1,7 @@
 package com.microservicos.hrpayroll.resource;
 
+import com.microservicos.hrpayroll.client.WorkerClient;
+import com.microservicos.hrpayroll.client.dto.WorkerDTO;
 import com.microservicos.hrpayroll.domain.entity.Payment;
 import com.microservicos.hrpayroll.domain.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +18,12 @@ public class PaymentResource {
     @Autowired
     private PaymentService paymentService;
 
+    @Autowired
+    private WorkerClient workerClient;
+
     @GetMapping("/{workerId}/days/{days}")
     public ResponseEntity<Payment> getPayment(@PathVariable("workerId") Long workerId, @PathVariable("days") Integer days){
-        return ResponseEntity.ok(paymentService.getPayment(workerId,days));
+        WorkerDTO workerDTO = workerClient.findById(workerId).getBody();
+        return ResponseEntity.ok(paymentService.getPayment(workerDTO.getName(),workerDTO.getDailyIncome(),days));
     }
 }
