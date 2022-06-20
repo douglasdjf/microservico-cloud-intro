@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "d4459a21-9a51-41ed-a607-cd42a0dc68c7",
-		"name": "Fase 1",
+		"_postman_id": "bedab8b2-a313-4274-b5c8-5326102bee41",
+		"name": "Fase 2",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "4020582"
 	},
@@ -10,18 +10,19 @@
 			"name": "hr-worker",
 			"item": [
 				{
-					"name": "Find ALL",
+					"name": "Find ALL Gateway",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8001/workers",
+							"raw": "http://localhost:8765/hr-worker/workers",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8001",
+							"port": "8765",
 							"path": [
+								"hr-worker",
 								"workers"
 							]
 						}
@@ -29,18 +30,19 @@
 					"response": []
 				},
 				{
-					"name": "Find By ID",
+					"name": "Find By ID Gateway",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8001/workers/1",
+							"raw": "http://localhost:8765/hr-worker/workers/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8001",
+							"port": "8765",
 							"path": [
+								"hr-worker",
 								"workers",
 								"1"
 							]
@@ -54,22 +56,23 @@
 			"name": "hr-payroll",
 			"item": [
 				{
-					"name": "Payment",
+					"name": "Payment Gateway",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/payments/2/days/10",
+							"raw": "http://localhost:8765/hr-payroll/payments/1/days/30",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8000",
+							"port": "8765",
 							"path": [
+								"hr-payroll",
 								"payments",
-								"2",
+								"1",
 								"days",
-								"10"
+								"30"
 							]
 						}
 					},
