@@ -1,14 +1,18 @@
 server:
-  port: 8002
+  port: 8000
 
 spring:
   application:
     name: hr-payroll
 
 
-hrworker:
+hr-worker:
     name: hr-worker
     url: http://localhost:8001
+    ribbon:
+      listOfServers: localhost:8001,localhost:8002
+
+
 
 
 

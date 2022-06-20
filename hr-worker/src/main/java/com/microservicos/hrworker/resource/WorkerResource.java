@@ -2,7 +2,9 @@ package com.microservicos.hrworker.resource;
 
 import com.microservicos.hrworker.domain.service.WorkerService;
 import com.microservicos.hrworker.dto.WorkerDTO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,9 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/workers")
 public class WorkerResource {
+
+    @Autowired
+    private Environment env;
 
     @Autowired
     private WorkerService workerService;
@@ -25,6 +31,7 @@ public class WorkerResource {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<WorkerDTO> findById(@PathVariable("id") Long id){
+        log.info("PORTA: " + env.getProperty("local.server.port"));
         return ResponseEntity.ok(workerService.findById(id));
     }
 }
