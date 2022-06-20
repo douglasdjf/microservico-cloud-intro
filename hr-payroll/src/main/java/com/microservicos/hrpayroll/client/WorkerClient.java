@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 @FeignClient(name = "${hr-worker.name}",
-           //  url = "${hr-worker.url}",
              path = "/workers")
 public interface WorkerClient {
 
