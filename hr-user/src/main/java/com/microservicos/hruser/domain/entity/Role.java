@@ -9,8 +9,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@ToString
-@EqualsAndHashCode
 @Entity
 @Table(name = "tb_role")
 public class Role implements Serializable {

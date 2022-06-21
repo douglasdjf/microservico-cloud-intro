@@ -11,8 +11,6 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@ToString
-@EqualsAndHashCode
 @Entity
 @Table(name = "tb_user")
 public class User implements Serializable {
@@ -24,7 +22,7 @@ public class User implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "email")
+    @Column(name = "email",unique = true)
     private String email;
 
     @Column(name = "password")
