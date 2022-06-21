@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: hr-config-server
+  cloud:
+    config:
+      server:
+        git:
+          default-label: main
+          uri: https://github.com/douglasdjf/microservico-cloud-intro-configs/
+server:
+  port: 8888
