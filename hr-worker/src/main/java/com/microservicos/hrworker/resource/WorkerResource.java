@@ -4,6 +4,7 @@ import com.microservicos.hrworker.domain.service.WorkerService;
 import com.microservicos.hrworker.dto.WorkerDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,11 +19,20 @@ import java.util.List;
 @RequestMapping("/workers")
 public class WorkerResource {
 
+    @Value("${test.config}")
+    private String testConfig;
+
     @Autowired
     private Environment env;
 
     @Autowired
     private WorkerService workerService;
+
+    @GetMapping("/configs")
+    public ResponseEntity<Void> getConfigs(){
+        log.info("CONFIG= : " + testConfig);
+        return ResponseEntity.noContent().build();
+    }
 
     @GetMapping
     public ResponseEntity<List<WorkerDTO>> findAll(){
