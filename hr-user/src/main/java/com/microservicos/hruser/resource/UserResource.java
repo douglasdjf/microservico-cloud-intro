@@ -21,7 +21,7 @@ public class UserResource {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<UserDTO> search(@RequestParam String email) throws UserPrincipalNotFoundException {
+    public ResponseEntity<UserDTO> search(@RequestParam("email") String email) throws UserPrincipalNotFoundException {
         return ResponseEntity.ok(usuarioService.findByEmail(email));
     }
 }
