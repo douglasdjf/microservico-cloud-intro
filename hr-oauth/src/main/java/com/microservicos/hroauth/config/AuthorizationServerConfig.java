@@ -20,17 +20,17 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    private JwtAccessTokenConverter jwtAccessTokenConverter;
+    private JwtAccessTokenConverter accessTokenConverter;
 
     @Autowired
-    private JwtTokenStore jwtTokenStore;
+    private JwtTokenStore tokenStore;
 
     @Autowired
     private AuthenticationManager authenticationManager;
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-       security.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
+        security.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
     }
 
     @Override
@@ -46,6 +46,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints.authenticationManager(authenticationManager).tokenStore(jwtTokenStore).accessTokenConverter(jwtAccessTokenConverter);
+        endpoints.authenticationManager(authenticationManager).tokenStore(tokenStore).accessTokenConverter(accessTokenConverter);
     }
 }
