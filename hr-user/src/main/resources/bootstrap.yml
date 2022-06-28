@@ -3,10 +3,10 @@ spring:
     name: hr-user
   cloud:
     config:
-      uri: http://localhost:8888
+      uri: http://hr-config-server:8888
 
   profiles:
-    active: dev
+    active: prod
 
 management:
   endpoints:
